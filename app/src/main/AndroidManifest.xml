@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.acid8xtreme.usb_otg_example">
+
+    <uses-feature android:name="android.hardware.usb.host" android:required="true" />
+
+    <application android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:name="UsbService" android:enabled="true" />
+        <receiver android:name=".broadcastReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="ACTION_USB_PERMISSION_GRANTED" />
+                <action android:name="ACTION_USB_PERMISSION_NOT_GRANTED" />
+                <action android:name="ACTION_NO_USB" />
+                <action android:name="ACTION_USB_DISCONNECTED" />
+                <action android:name="ACTION_USB_NOT_SUPPORTED" />
+                <action android:name="ACTION_USB_DEVICE_NOT_WORKING" />
+                <action android:name="ACTION_CDC_DRIVER_NOT_WORKING" />
+                <action android:name="ACTION_USB_READY" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
